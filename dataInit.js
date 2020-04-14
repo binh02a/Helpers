@@ -45,7 +45,7 @@ const industries = _.sampleSize(industryList, 5).map(ind => `(uuid(), "${ind}", 
 const users = [...Array(50)]
     .map(() => {
         const salt = crypto.randomBytes(128);
-        const password = crypto.createHmac('sha512', salt.toString()).update('password').digest('hex').toString();
+        const password = crypto.createHmac('sha512', salt).update('password').digest('hex').toString();
 
         return `(uuid(), "${fake.internet.email()}", UNHEX("${password.toString()}"), UNHEX("${salt.toString('hex')}"), "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
     });
