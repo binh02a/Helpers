@@ -42,12 +42,14 @@ let roles = _.uniq([...Array(20)].map(fake.name.jobTitle));
 const industries = _.sampleSize(industryList, 5).map(ind => `(uuid(), "${ind}", "${fake.lorem.sentence()}")`);
 
 // 50 users
+// the first 5 users are treated as employers
 const users = [...Array(50)]
-    .map(() => {
+    .map((__, idx) => {
         const salt = crypto.randomBytes(128);
         const password = crypto.createHmac('sha512', salt).update('password').digest('hex').toString();
 
-        return `(uuid(), "${fake.internet.email()}", UNHEX("${password.toString()}"), UNHEX("${salt.toString('hex')}"), "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
+        return `(uuid(), "${fake.internet.email()}", UNHEX("${password.toString()}"), UNHEX("${salt.toString('hex')}"), "${
+            idx > 4 && 'employee' || 'employer'}", "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
     });
 
 locations = (locations || []).map(location => `(uuid(), "${location.address}", '${JSON.stringify(location.location)}', "${location.area}")`);
@@ -56,11 +58,12 @@ let locationIds;
 let roleIds;
 let employers, employees;
 
+
 // hash "password" using secret "random"
 // chaining atomic actions so it will be easier to comment out unnecessary parts
 return connect()
     // USERS
-    .then(() => query(`insert into users(id, email, password, salt, resetCode) values ${users.join(',')}`))
+    .then(() => query(`insert into users(id, email, password, salt, userType, resetCode) values ${users.join(',')}`))
     .then(() => console.log('Users added'))
     .then(() => query('select id from users;'))
     .then((docs) => {

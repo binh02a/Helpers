@@ -14,6 +14,11 @@ The search strings are configurable within the file. The result will be written 
 4. **Generate the data**:  ```node dataInit```. This connects to the database and
 add data to the tables. This requires ```locations.json``` to run.
 
+# Dump database
+```
+mysqldump -u <user> -p recruiter > dbDump.sql
+```
+
 # Using dbDump
 We can use dbDump to create and add data into the database instead of the way in previous section. But this requires the database to exists beforehand.
 
