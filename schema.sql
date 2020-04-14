@@ -1,0 +1,97 @@
+drop database if exists recruiter;
+create database recruiter;
+use recruiter;
+
+create table users(
+    id char(36) not null,
+    email varchar(320) not null,
+    password char(32) not null,
+    customerId varchar(30),
+    subscriptionId varchar(30),
+    resetCode char(6) not null,
+    primary key (id)
+);
+
+create table locations(
+    id char(36) not null,
+    address varchar(200) not null,
+    location json not null,
+    area varchar(50) not null,
+    primary key (id)
+);
+
+create table employers(
+    id char(36) not null,
+    companyName varchar(100) not null,
+    phoneNumber varchar(30) not null,
+    website varchar(100) not null,
+    address char(36) not null,
+    primary key (id),
+    foreign key (id) references users(id),
+    foreign key (address) references locations(id)
+);
+
+create table employees(
+    id char(36) not null,
+    name varchar(100) not null,
+    phoneNumber varchar(30),
+    bio varchar(200),
+    primary key (id),
+    foreign key (id) references users(id)
+);
+
+create table industries(
+    id char(36) not null,
+    industry varchar(100) not null,
+    description varchar(100) not null,
+    primary key (id)
+);
+
+create table roles(
+    id char(36) not null,
+    roleName varchar(100) not null unique,
+    industry char(36) not null,
+    description varchar(100) not null,
+    primary key (id),
+    foreign key (industry) references industries(id)
+);
+
+create table jobs(
+    jobId char(36) not null,
+    employer char(36) not null,
+    role char(36) not null,
+    jobTitle varchar(100) not null,
+    salary varchar(100),
+    workLocation varchar(36) not null,
+    description varchar(100),
+    primary key (jobId),
+    foreign key (employer) references employers(id),
+    foreign key (role) references roles(id),
+    foreign key (workLocation) references locations(id)
+);
+
+create table desiredLocations(
+    employee char(36) not null,
+    locationId char(36) not null,
+    primary key (employee, locationId),
+    foreign key (employee) references employees(id),
+    foreign key (locationId) references locations(id)
+);
+
+create table interestedRoles(
+    employee char(36) not null,
+    roleId char(36) not null,
+    primary key (employee, roleId),
+    foreign key (employee) references employees(id),
+    foreign key (roleId) references roles(id)
+);
+
+create table jobInterest(
+    jobId char(36) not null,
+    employee char(36) not null,
+    initiator enum('employer', 'employee'),
+    status enum('available', 'liked', 'offered', 'done'),
+    primary key (jobId, employee),
+    foreign key (jobId) references jobs(jobId),
+    foreign key (employee) references employees(id)
+);

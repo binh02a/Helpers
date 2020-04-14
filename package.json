@@ -1,0 +1,19 @@
+{
+  "name": "helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate": "node location && node dataInit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.15",
+    "md5": "^2.2.1",
+    "mysql": "^2.18.1"
+  }
+}

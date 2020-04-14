@@ -1,0 +1,482 @@
+[
+  {
+    "address": "314 Lê Thị Riêng, Tân Thới An, Quận 12, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.8734765,
+      "lng": 106.6554024
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "172 Ông Ích Khiêm, Phường 5, Quận 11, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7667661,
+      "lng": 106.6429388
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "403 Cách Mạng Tháng Tám, Phường 13, Quận 10, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7809243,
+      "lng": 106.6756289
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "592 Nguyễn Ảnh Thủ, Trung Mỹ Tây, Quận 12, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.8592969,
+      "lng": 106.6098683
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "28-30 Nguyen Thai Binh Street, Nguyen Thai Binh Ward, District 1, Ho Chi Minh City, Phường Nguyễn Thái Bình, Quận 1, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7698733,
+      "lng": 106.7003882
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Đồng Văn Cống, Phường Thạnh Mỹ Lợi, Quận 2, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7753988,
+      "lng": 106.7594779
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Đường số 50, Bình Trưng Đông, Quận 2, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7888971,
+      "lng": 106.7749
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Đường Số 1, Liên Tỉnh Lộ 25B, Phường Thạnh Mỹ Lợi, Quận 2, Phường Thạnh Mỹ Lợi, Quận 2, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7757492,
+      "lng": 106.7599118
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "34, 31D-Khu C, An Phú, Quận 2, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7918944,
+      "lng": 106.7404785
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "63 đường số 5, phường Cát Lái, Quận 2, Cát Lái, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.775406,
+      "lng": 106.7712947
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "386/79 Đ. Lê Văn Sỹ, Phường 14, Quận 3, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7898918,
+      "lng": 106.6772974
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "2 Bà Huyện Thanh Quan, Phường 6, Quận 3, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7752899,
+      "lng": 106.6903125
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "9 Huỳnh Tịnh Của, Phường 8, Quận 3, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7883648,
+      "lng": 106.6883543
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "139 Nguyễn Đình Chiểu, Phường 6, Quận 3, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.777158,
+      "lng": 106.6890399
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "243 Cách Mạng Tháng Tám, Phường 4, Quận 3, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7770139,
+      "lng": 106.6829741
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "63, 65 Bến Vân Đồn, Phường 12, Quận 4, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7653075,
+      "lng": 106.7022376
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Hẻm 42 Hoàng Diệu, Phường 12, Quận 4, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7653624,
+      "lng": 106.7060284
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "18 Đường Đoàn Như Hài, Phường 12, Quận 4, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7663214,
+      "lng": 106.7051618
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "64 Nguyễn Khoái, Phường 2, Quận 4, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7550974,
+      "lng": 106.694483
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "14 Đường Đoàn Như Hài, Phường 12, Quận 4, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7667587,
+      "lng": 106.7057955
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "3 Mạc Cửu, Phường 13, Quận 5, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.750223,
+      "lng": 106.659248
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "642 A Đ. Nguyễn Trãi, Phường 11, Quận 5, Hồ Chí Minh 700000, Vietnam",
+    "location": {
+      "lat": 10.7540801,
+      "lng": 106.6657832
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "642 Đ. Nguyễn Trãi, Phường 11, Quận 5, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7541276,
+      "lng": 106.6662972
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "203 An Dương Vương, Phường 8, Quận 5, phường 8 Quận 5 Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7558049,
+      "lng": 106.6675406
+    },
+    "area": "phường 8 Quận 5 Hồ Chí Minh"
+  },
+  {
+    "address": "660 Võ Văn Kiệt, Phường 1, Quận 5, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7520489,
+      "lng": 106.6836549
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "107 Cao Văn Lầu, Phường 1, Quận 6, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7464601,
+      "lng": 106.6495791
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "88 Tháp Mười, Phường 2, Quận 6, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7499949,
+      "lng": 106.6504626
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Hẻm 45/67 Bình Tiên, Phường 7, Quận 6, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7405803,
+      "lng": 106.6424917
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "114 Đường Phạm Văn Chí, Phường 1, Quận 6, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7462002,
+      "lng": 106.6490232
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "2D Chợ Lớn, Phường 11, Quận 6, Phường 11 Quận 6 Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7465793,
+      "lng": 106.6348488
+    },
+    "area": "Phường 11 Quận 6 Hồ Chí Minh"
+  },
+  {
+    "address": "3 Tân Phú, P, Quận 7, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7327717,
+      "lng": 106.725198
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "1 Tân Phú, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7328615,
+      "lng": 106.7251448
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "504, 506 Huỳnh Tấn Phát, Bình Thuận, Quận 7, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.741525,
+      "lng": 106.7292689
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "People's Committee Of District 7, 1362, Huynh Tan Phat Street, Phu My Ward, District 7, Tân Phú, Quận 7, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7321119,
+      "lng": 106.7262769
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "1364 Huỳnh Tấn Phát, KP1, Quận 7, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.713834,
+      "lng": 106.7370286
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "175 Phạm Hùng, Phường 4, Quận 8, Phường 5, Quận 8, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7395539,
+      "lng": 106.6693443
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "126 Đường Lê Quyên, Phường 5, Quận 8, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.740894,
+      "lng": 106.6664351
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "993 Phạm Thế Hiển, Phường 5, 8, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7428452,
+      "lng": 106.667443
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "993 Phạm Thế Hiển, Phường 5, Quận 8, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7422643,
+      "lng": 106.6678169
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "250 Tùng Thiện Vương, Phường 11, Quận 8, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7471976,
+      "lng": 106.6615428
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Dong Nai, Vietnam",
+    "location": {
+      "lat": 11.0686305,
+      "lng": 107.1675976
+    },
+    "area": "Dong Nai"
+  },
+  {
+    "address": "Đồng Nai, Cư xá Bắc Hải, Phường 15, Quận 10, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.7788966,
+      "lng": 106.6626316
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "Kp5 Đường Nguyễn Khuyến, Trảng Dài, Thành phố Biên Hòa, Đồng Nai, Vietnam",
+    "location": {
+      "lat": 10.9846076,
+      "lng": 106.8691285
+    },
+    "area": "Đồng Nai"
+  },
+  {
+    "address": "4 Lê Quý Đôn, Kp3, Thành phố Biên Hòa, Đồng Nai, Vietnam",
+    "location": {
+      "lat": 10.9591332,
+      "lng": 106.8613505
+    },
+    "area": "Đồng Nai"
+  },
+  {
+    "address": "1048A Phạm Văn Thuận, Tân Mai, Thành phố Biên Hòa, Đồng Nai, Vietnam",
+    "location": {
+      "lat": 10.9580619,
+      "lng": 106.8468985
+    },
+    "area": "Đồng Nai"
+  },
+  {
+    "address": "Long An, Cần Đước District, Long An Province, Vietnam",
+    "location": {
+      "lat": 10.5607168,
+      "lng": 106.6497623
+    },
+    "area": "Long An Province"
+  },
+  {
+    "address": "2523 South Blvd, Charlotte, NC 28203, USA",
+    "location": {
+      "lat": 35.2023634,
+      "lng": -80.8646618
+    },
+    "area": "North Carolina"
+  },
+  {
+    "address": "Long An Province, Vietnam",
+    "location": {
+      "lat": 10.695572,
+      "lng": 106.2431205
+    },
+    "area": "Long An Province"
+  },
+  {
+    "address": "Long An, Mỹ Tho, Tien Giang, Vietnam",
+    "location": {
+      "lat": 10.4032411,
+      "lng": 106.3384114
+    },
+    "area": "Tien Giang"
+  },
+  {
+    "address": "211 Nguyễn Thông, Phường 3, Tân An, Long An, Vietnam",
+    "location": {
+      "lat": 10.5327197,
+      "lng": 106.4261931
+    },
+    "area": "Long An"
+  },
+  {
+    "address": "Tien Giang, Vietnam",
+    "location": {
+      "lat": 10.4493324,
+      "lng": 106.3420504
+    },
+    "area": "Tien Giang"
+  },
+  {
+    "address": "Cái Bè, Cái Bè District, Tien Giang, Vietnam",
+    "location": {
+      "lat": 10.3367347,
+      "lng": 106.0298196
+    },
+    "area": "Tien Giang"
+  },
+  {
+    "address": "Tiền Giang, Phường 2, Tân Bình, Hồ Chí Minh, Vietnam",
+    "location": {
+      "lat": 10.8082688,
+      "lng": 106.6655128
+    },
+    "area": "Hồ Chí Minh"
+  },
+  {
+    "address": "02 Đường Hùng Vương, Phường 1, Thành phố Mỹ Tho, Tiền Giang, Vietnam",
+    "location": {
+      "lat": 10.3549773,
+      "lng": 106.3643284
+    },
+    "area": "Tiền Giang"
+  },
+  {
+    "address": "Tiền Giang, Lê Lợi, Bắc Giang, Vietnam",
+    "location": {
+      "lat": 21.2694124,
+      "lng": 106.1992451
+    },
+    "area": "Bắc Giang"
+  },
+  {
+    "address": "Ishikawa, Japan",
+    "location": {
+      "lat": 36.32603169999999,
+      "lng": 136.5289653
+    },
+    "area": "Ishikawa"
+  },
+  {
+    "address": "Ishikawa, Uruma, Okinawa 904-1106, Japan",
+    "location": {
+      "lat": 26.4376186,
+      "lng": 127.8220414
+    },
+    "area": "Okinawa"
+  },
+  {
+    "address": "Ishikawacho, Ota City, Tokyo 145-0061, Japan",
+    "location": {
+      "lat": 35.6029663,
+      "lng": 139.6822041
+    },
+    "area": "Tokyo"
+  },
+  {
+    "address": "Ishikawa, Fujisawa, Kanagawa 252-0815, Japan",
+    "location": {
+      "lat": 35.3791036,
+      "lng": 139.4542268
+    },
+    "area": "Kanagawa"
+  },
+  {
+    "address": "Ishikawacho, Naka Ward, Yokohama, Kanagawa 231-0868, Japan",
+    "location": {
+      "lat": 35.4373853,
+      "lng": 139.6410647
+    },
+    "area": "Kanagawa"
+  }
+]
