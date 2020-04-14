@@ -5,11 +5,11 @@ use recruiter;
 create table users(
     id char(36) not null,
     email varchar(320) not null,
-    password varbinary(512) not null,
-    salt varchar(100) not null,
+    password binary(64) not null,
+    salt binary(128) not null,
     customerId varchar(30),
     subscriptionId varchar(30),
-    resetCode char(6) not null,
+    resetCode char(6) not null default "000000",
     primary key (id)
 );
 

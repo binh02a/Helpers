@@ -42,10 +42,13 @@ let roles = _.uniq([...Array(20)].map(fake.name.jobTitle));
 const industries = _.sampleSize(industryList, 5).map(ind => `(uuid(), "${ind}", "${fake.lorem.sentence()}")`);
 
 // 50 users
-const salt = 'subject to change';
-const hashedPassword = crypto.createHmac('sha512', salt).update('password').digest('hex');
 const users = [...Array(50)]
-    .map(() => `(uuid(), "${fake.internet.email()}", "${hashedPassword}", "${salt}", "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`);
+    .map(() => {
+        const salt = crypto.randomBytes(128);
+        const password = crypto.createHmac('sha512', salt.toString()).update('password').digest('hex').toString();
+
+        return `(uuid(), "${fake.internet.email()}", UNHEX("${password.toString()}"), UNHEX("${salt.toString('hex')}"), "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
+    });
 
 locations = (locations || []).map(location => `(uuid(), "${location.address}", '${JSON.stringify(location.location)}', "${location.area}")`);
 let userIds;
