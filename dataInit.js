@@ -49,7 +49,7 @@ const users = [...Array(50)]
         const password = crypto.createHmac('sha512', salt).update('password').digest('hex').toString();
 
         return `(uuid(), "${fake.internet.email()}", UNHEX("${password.toString()}"), UNHEX("${salt.toString('hex')}"), "${
-            idx > 4 && 'employee' || 'employer'}", "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
+            idx > 4 && 'employee' || 'employer'}", TRUE, "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
     });
 
 locations = (locations || []).map(location => `(uuid(), "${location.address}", '${JSON.stringify(location.location)}', "${location.area}")`);
@@ -63,7 +63,7 @@ let employers, employees;
 // chaining atomic actions so it will be easier to comment out unnecessary parts
 return connect()
     // USERS
-    .then(() => query(`insert into users(id, email, password, salt, userType, resetCode) values ${users.join(',')}`))
+    .then(() => query(`insert into users(id, email, password, salt, userType, active, resetCode) values ${users.join(',')}`))
     .then(() => console.log('Users added'))
     .then(() => query('select id from users;'))
     .then((docs) => {

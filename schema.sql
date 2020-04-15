@@ -9,6 +9,7 @@ create table users(
     salt binary(128) not null,
     customerId varchar(30),
     userType enum('employer', 'employee'),
+    active boolean not null default FALSE,
     subscriptionId varchar(30),
     resetCode char(6) not null default "000000",
     primary key (id)
