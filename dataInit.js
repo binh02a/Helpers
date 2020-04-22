@@ -52,7 +52,7 @@ const users = [...Array(50)]
             idx > 4 && 'employee' || 'employer'}", TRUE, "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
     });
 
-locations = (locations || []).map(location => `(uuid(), "${location.address}", '${JSON.stringify(location.location)}', "${location.area}")`);
+locations = (locations || []).map(location => `(uuid(), "${location.address}", "${location.area}", ${location.longitude}, ${location.latitude})`);
 let userIds;
 let locationIds;
 let roleIds;
@@ -94,7 +94,7 @@ return connect()
     })
     // EMPLOYEES
     .then(() => {
-        const docs = employees.map((id) => `("${id}", "${fake.name.findName()}", "${fake.phone.phoneNumber()}", "${fake.lorem.sentence()}")`);
+        const docs = employees.map((id) => `("${id}", "${fake.name.firstName()}", "${fake.name.lastName()}", "${fake.phone.phoneNumber()}", "${fake.date.between('1980-01-01', '2000-12-31').toJSON().slice(0, 10)}" ,"${fake.lorem.sentence()}")`);
 
         return query(`insert into employees values ${docs.join(',')};`);
     })

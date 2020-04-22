@@ -2,7 +2,7 @@ const _ = require('lodash');
 const axios = require('axios');
 const fs = require('fs');
 
-const apiKey = '<API key>';
+const apiKey = 'AIzaSyA1mKlaPbS9feVEdR2tHqRvtjepS6OGnI4';
 const searchedPlaces = [
     'HCMC, dist 1',
     'HCMC, dist 2',
@@ -54,8 +54,9 @@ const getLocations = () => {
 
                     return {
                         address: res.formatted_address,
-                        location: _.get(res, 'geometry.location'),
                         area,
+                        longitude: _.get(res, 'geometry.location.lng'),
+                        latitude: _.get(res, 'geometry.location.lat'),
                     }
                 });
         })))

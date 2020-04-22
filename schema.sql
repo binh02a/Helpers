@@ -18,8 +18,9 @@ create table users(
 create table locations(
     id char(36) not null,
     address varchar(200) not null,
-    location json not null,
     area varchar(50) not null,
+    longitude decimal(18,12) not null,
+    latitude decimal(18,12) not null,
     primary key (id)
 );
 
@@ -36,8 +37,10 @@ create table employers(
 
 create table employees(
     id char(36) not null,
-    name varchar(100) not null,
+    firstName varchar(100) not null,
+    lastName varchar(100) not null,
     phoneNumber varchar(30),
+    birthday date,
     bio varchar(200),
     primary key (id),
     foreign key (id) references users(id)
