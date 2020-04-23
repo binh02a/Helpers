@@ -4,75 +4,73 @@ const fs = require('fs');
 
 const apiKey = 'AIzaSyA1mKlaPbS9feVEdR2tHqRvtjepS6OGnI4';
 const searchedPlaces = [
-    'HCMC, dist 1',
-    'HCMC, dist 2',
-    'HCMC, dist 3',
-    'HCMC, dist 4',
-    'HCMC, dist 5',
-    'HCMC, dist 6',
-    'HCMC, dist 7',
-    'HCMC, dist 8',
-    'Dong Nai',
-    'Long An',
-    'Tien Giang',
-    'Ishikawa',
+  'Ho chi minh District 1',
+  'Ho chi minh District 2',
+  'Ho chi minh District 3',
+  'Ho chi minh District 4',
+  'Ho chi minh District 5',
+  'Ho chi minh District 6',
+  'Ho chi minh District 7',
+  'Ho chi minh District 8',
+  'Ho chi minh District 9',
+  'Ho chi minh District 10',
+  'District 12',
+  'Ho chi minh Ho chi minh District 11',
+  'Ho chi minh Gò Vấp',
+  'Ho chi minh Tân Bình',
+  'Ho chi minh Tân Phú',
+  'Ho chi minh Bình Thạnh',
+  'Ho chi minh Phú Nhuận',
+  'Ho chi minh Bình Tân',
+  'Ho chi minh Thủ Đức',
 ];
 
 const getLocations = () => {
-    // get those that matched the searched places
-    return Promise.all(searchedPlaces.map(place => {
-        return axios.get('https://maps.googleapis.com/maps/api/place/autocomplete/json', {
-            params: {
-                key: apiKey,
-                input: place
-            }
+  // get those that matched the searched places
+  return Promise.all(searchedPlaces.map(place => {
+      return axios.get('https://maps.googleapis.com/maps/api/place/autocomplete/json', {
+          params: {
+            key: apiKey,
+            input: place
+          }
         })
-            .then((res) => {
-                return _.map((res.data || {}).predictions, 'place_id');
-            });
+        .then((res) => {
+          return _.map((res.data || {}).predictions, 'place_id');
+        });
     }))
-        .then(_.flatten)
-        .then(_.uniq)
-        .then((ids) => Promise.all(ids.map((id) => {
-            return axios.get('https://maps.googleapis.com/maps/api/place/details/json', {
-                params: {
-                    key: apiKey,
-                    place_id: id
-                }
-            })
-                .then((res) => {
-                    // unwrap axios
-                    res = (res.data || {}).result;
-                    const area = (_.find(res.address_components, (component) => {
-                        return (component.types || []).includes('administrative_area_level_1')
-                    }) || {}).long_name;
+    .then(_.flatten)
+    .then(_.uniq)
+    .then((ids) => Promise.all(ids.map((id) => {
+      return axios.get('https://maps.googleapis.com/maps/api/place/details/json', {
+          params: {
+            key: apiKey,
+            place_id: id
+          }
+        })
+        .then((res) => {
+          // unwrap axios
+          res = (res.data || {}).result;
 
-                    if (!area) {
-                        // ignore those without administrative_area_level_1
-                        return undefined;
-                    }
-
-                    return {
-                        address: res.formatted_address,
-                        area,
-                        longitude: _.get(res, 'geometry.location.lng'),
-                        latitude: _.get(res, 'geometry.location.lat'),
-                    }
-                });
-        })))
-        .then(_.flatten)
-        .then(_.compact);
+          return {
+            address: res.formatted_address,
+            longitude: _.get(res, 'geometry.location.lng'),
+            latitude: _.get(res, 'geometry.location.lat'),
+          }
+        });
+    })))
+    .then(_.flatten)
+    .then(_.compact);
 };
 
 return getLocations()
-    .then((data) => {
-        fs.writeFileSync('locations.json', JSON.stringify(data, null, 2));
-    })
-    .then(() => {
-        process.exit(0);
-    })
-    .catch((err) => {
-        console.log(err);
+  .then((data) => {
+    fs.writeFileSync('locations.json', JSON.stringify(data, null, 2));
+  })
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.log(err);
 
-        process.exit(1);
-    });
+    process.exit(1);
+  });

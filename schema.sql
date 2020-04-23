@@ -18,7 +18,6 @@ create table users(
 create table locations(
     id char(36) not null,
     address varchar(200) not null,
-    area varchar(50) not null,
     longitude decimal(18,12) not null,
     latitude decimal(18,12) not null,
     primary key (id)
@@ -41,9 +40,13 @@ create table employees(
     lastName varchar(100) not null,
     phoneNumber varchar(30),
     birthday date,
+    availableFrom date,
+    availableTo date,
+    location char(36),
     bio varchar(200),
     primary key (id),
-    foreign key (id) references users(id)
+    foreign key (id) references users(id),
+    foreign key (location) references locations(id)
 );
 
 create table industries(
@@ -68,20 +71,13 @@ create table jobs(
     role char(36) not null,
     jobTitle varchar(100) not null,
     salary varchar(100),
+    startDate date,
     workLocation varchar(36) not null,
     description varchar(100),
     primary key (jobId),
     foreign key (employer) references employers(id),
     foreign key (role) references roles(id),
     foreign key (workLocation) references locations(id)
-);
-
-create table desiredLocations(
-    employee char(36) not null,
-    locationId char(36) not null,
-    primary key (employee, locationId),
-    foreign key (employee) references employees(id),
-    foreign key (locationId) references locations(id)
 );
 
 create table interestedRoles(

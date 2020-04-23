@@ -16,7 +16,7 @@ add data to the tables. This requires ```locations.json``` to run.
 
 # Dump database
 ```
-mysqldump -u <user> -p recruiter > dbDump.sql
+mysqldump -u root -p recruiter > dbDump.sql
 ```
 
 # Using dbDump

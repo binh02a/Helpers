@@ -52,12 +52,15 @@ const users = [...Array(50)]
             idx > 4 && 'employee' || 'employer'}", TRUE, "${[...Array(6)].map(() => Math.random().toString(36)[2]).join('')}")`;
     });
 
-locations = (locations || []).map(location => `(uuid(), "${location.address}", "${location.area}", ${location.longitude}, ${location.latitude})`);
+locations = (locations || []).map(location => `(uuid(), "${location.address}", ${location.longitude}, ${location.latitude})`);
 let userIds;
 let locationIds;
 let roleIds;
 let employers, employees;
 
+const nullableDate = () => {
+  return fake.random.boolean() && `"${fake.date.between('2021-01-01', '2022-12-31').toJSON().slice(0, 10)}"` || null;
+}
 
 // hash "password" using secret "random"
 // chaining atomic actions so it will be easier to comment out unnecessary parts
@@ -94,7 +97,16 @@ return connect()
     })
     // EMPLOYEES
     .then(() => {
-        const docs = employees.map((id) => `("${id}", "${fake.name.firstName()}", "${fake.name.lastName()}", "${fake.phone.phoneNumber()}", "${fake.date.between('1980-01-01', '2000-12-31').toJSON().slice(0, 10)}" ,"${fake.lorem.sentence()}")`);
+        const docs = employees.map((id) => `("${
+          id}", "${
+            fake.name.firstName()}", "${
+              fake.name.lastName()}", "${
+                fake.phone.phoneNumber()}", "${
+                  fake.date.between('1980-01-01', '2000-12-31').toJSON().slice(0, 10)}", "${
+                    fake.date.between('2020-05-01', '2020-12-31').toJSON().slice(0, 10)}", ${
+                      nullableDate()}, "${
+                        _.sample(locationIds)}", "${
+                          fake.lorem.sentence()}")`);
 
         return query(`insert into employees values ${docs.join(',')};`);
     })
@@ -112,6 +124,7 @@ return connect()
                     fake.lorem.words(5 + fake.random.number(5))}","${
                         fake.random.number({min: 10000, max: 20000})} - ${
                             fake.random.number({min: 20001, max: 100000})}", "${
+                              fake.date.between('2020-05-01', '2022-12-31').toJSON().slice(0, 10)}", "${
                                 _.sample(locationIds)}", "${fake.lorem.sentence()}")`);
 
         return query(`insert into jobs values ${jobs.join(',')};`);
@@ -124,14 +137,6 @@ return connect()
         }));
 
         return query(`insert into interestedRoles values ${interestedRoles.join(',')};`);
-    })
-    .then(() => {
-        // each employees 3-5 interested job locations
-        const desiredLocations = _.flatten(employees.map((employee) => {
-            return _.sampleSize(locationIds, fake.random.number({min:3, max:5})).map((loc) => `("${employee}", "${loc}")`);
-        }));
-
-        return query(`insert into desiredLocations values ${desiredLocations.join(',')};`);
     })
     .then(() => console.log('Done fam, enjoy'))
     .then(() => {
