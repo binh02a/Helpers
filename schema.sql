@@ -13,7 +13,7 @@ create table users(
     subscriptionId varchar(30),
     resetCode char(6) not null default "000000",
     primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table locations(
     id char(36) not null,
@@ -21,7 +21,7 @@ create table locations(
     longitude decimal(18,12) not null,
     latitude decimal(18,12) not null,
     primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table employers(
     id char(36) not null,
@@ -32,29 +32,29 @@ create table employers(
     primary key (id),
     foreign key (id) references users(id),
     foreign key (address) references locations(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table employees(
     id char(36) not null,
     firstName varchar(100) not null,
     lastName varchar(100) not null,
     phoneNumber varchar(30),
-    birthday date,
-    availableFrom date,
+    birthday date not null,
+    availableFrom date not null,
     availableTo date,
-    location char(36),
-    bio varchar(200),
+    location char(36) not null,
+    bio varchar(200) not null,
     primary key (id),
     foreign key (id) references users(id),
     foreign key (location) references locations(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table industries(
     id char(36) not null,
     industry varchar(100) not null,
     description varchar(100) not null,
     primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table roles(
     id char(36) not null,
@@ -63,7 +63,7 @@ create table roles(
     description varchar(100) not null,
     primary key (id),
     foreign key (industry) references industries(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table jobs(
     jobId char(36) not null,
@@ -78,7 +78,7 @@ create table jobs(
     foreign key (employer) references employers(id),
     foreign key (role) references roles(id),
     foreign key (workLocation) references locations(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table interestedRoles(
     employee char(36) not null,
@@ -86,7 +86,7 @@ create table interestedRoles(
     primary key (employee, roleId),
     foreign key (employee) references employees(id),
     foreign key (roleId) references roles(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table jobInterest(
     jobId char(36) not null,
@@ -96,4 +96,4 @@ create table jobInterest(
     primary key (jobId, employee),
     foreign key (jobId) references jobs(jobId),
     foreign key (employee) references employees(id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
