@@ -17,7 +17,7 @@ create table users(
 
 create table locations(
     id char(36) not null,
-    postcode varchar(100) not null,
+    address varchar(100) not null,
     longitude decimal(18,12) not null,
     latitude decimal(18,12) not null,
     primary key (id)
@@ -74,7 +74,7 @@ create table jobs(
     employer char(36) not null,
     role char(36) not null,
     jobTitle varchar(100) not null,
-    salary float,
+    hourlyRate float,
     startDate date,
     workLocation varchar(36) not null,
     description varchar(100),
