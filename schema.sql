@@ -8,16 +8,16 @@ create table users(
     password binary(64) not null,
     salt binary(128) not null,
     customerId varchar(30),
+    subscriptionId varchar(30),
     userType enum('employer', 'employee'),
     active boolean not null default FALSE,
-    subscriptionId varchar(30),
     resetCode char(6) not null default "000000",
     primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table locations(
     id char(36) not null,
-    address varchar(200) not null,
+    postcode varchar(100) not null,
     longitude decimal(18,12) not null,
     latitude decimal(18,12) not null,
     primary key (id)
@@ -42,7 +42,11 @@ create table employees(
     birthday date not null,
     availableFrom date not null,
     availableTo date,
-    location char(36) not null,
+    hourlyRateFrom float,
+    hourlyRateTo float,
+    maximumCommute int,
+    location char(36),
+    ignoreDistance boolean not null default FALSE,
     bio varchar(200) not null,
     primary key (id),
     foreign key (id) references users(id),
@@ -70,7 +74,7 @@ create table jobs(
     employer char(36) not null,
     role char(36) not null,
     jobTitle varchar(100) not null,
-    salary varchar(100),
+    salary float,
     startDate date,
     workLocation varchar(36) not null,
     description varchar(100),
@@ -96,4 +100,17 @@ create table jobInterest(
     primary key (jobId, employee),
     foreign key (jobId) references jobs(jobId),
     foreign key (employee) references employees(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table notifications(
+    id char(36) not null,
+    receipent char(36) not null,
+    job char(36) not null,
+    employee char(36) not null,
+    message varchar(200) not null,
+    unread boolean not null default true,
+    createdDate date not null,
+    foreign key (job) references jobs(jobId),
+    foreign key (employee) references employees(id),
+    foreign key (receipent) references users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

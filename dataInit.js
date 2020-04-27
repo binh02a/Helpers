@@ -58,8 +58,13 @@ let locationIds;
 let roleIds;
 let employers, employees;
 
+const dice = () => fake.random.boolean();
+const salaryLowEnds = [8.72,10,15];
+const salaryHighEnds = [20,25,30];
+const salaryPool = [...salaryLowEnds, ...salaryHighEnds];
+
 const nullableDate = () => {
-  return fake.random.boolean() && `"${fake.date.between('2021-01-01', '2022-12-31').toJSON().slice(0, 10)}"` || null;
+  return dice() && `"${fake.date.between('2021-01-01', '2022-12-31').toJSON().slice(0, 10)}"` || null;
 }
 
 // hash "password" using secret "random"
@@ -104,9 +109,13 @@ return connect()
                 fake.phone.phoneNumber()}", "${
                   fake.date.between('1980-01-01', '2000-12-31').toJSON().slice(0, 10)}", "${
                     fake.date.between('2020-05-01', '2020-12-31').toJSON().slice(0, 10)}", ${
-                      nullableDate()}, "${
-                        _.sample(locationIds)}", "${
-                          fake.lorem.sentence()}")`);
+                      nullableDate()}, ${
+                        _.sample(salaryLowEnds)}, ${
+                          dice() && _.sample(salaryHighEnds) || null}, ${
+                            fake.random.number({min: 100})}, "${
+                              _.sample(locationIds)}", ${
+                                dice() && dice()}, "${
+                                  fake.lorem.sentence()}")`);
 
         return query(`insert into employees values ${docs.join(',')};`);
     })
@@ -121,9 +130,8 @@ return connect()
         const jobs = [...Array(10)].map(() => `(uuid(), "${
             _.sample(employers)}", "${
                 _.sample(roleIds)}", "${
-                    fake.lorem.words(5 + fake.random.number(5))}","${
-                        fake.random.number({min: 10000, max: 20000})} - ${
-                            fake.random.number({min: 20001, max: 100000})}", "${
+                    fake.lorem.words(5 + fake.random.number(5))}",${
+                      _.sample(salaryPool)}, "${
                               fake.date.between('2020-05-01', '2022-12-31').toJSON().slice(0, 10)}", "${
                                 _.sample(locationIds)}", "${fake.lorem.sentence()}")`);
 
