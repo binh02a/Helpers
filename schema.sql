@@ -74,20 +74,21 @@ create table roles(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table jobs(
-    jobId char(36) not null,
+    id char(36) not null,
     employer char(36) not null,
     role char(36) not null,
     contactName char(100),
     contactNumber char(30),
     contactEmail char(100),
     jobTitle varchar(200) not null,
-    payRate float,
-    startDate date,
+    payRate float not null,
+    startDate date not null,
+    endDate date,
     workLocation varchar(36) not null,
     description varchar(100),
     bonus boolean not null default false,
     accomodation boolean not null default false,
-    primary key (jobId),
+    primary key (id),
     foreign key (employer) references employers(id),
     foreign key (role) references roles(id),
     foreign key (workLocation) references locations(id)
@@ -103,13 +104,13 @@ create table interestedRoles(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create table jobInterest(
-    jobId char(36) not null,
+    job char(36) not null,
     employee char(36) not null,
     initiator enum('employer', 'employee'),
     status enum('available', 'liked', 'offered', 'done'),
-    primary key (jobId, employee),
-    unique (jobId, employee),
-    foreign key (jobId) references jobs(jobId),
+    primary key (job, employee),
+    unique (job, employee),
+    foreign key (job) references jobs(id),
     foreign key (employee) references employees(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -121,7 +122,7 @@ create table notifications(
     message varchar(200) not null,
     unread boolean not null default true,
     createdDate date not null,
-    foreign key (job) references jobs(jobId),
+    foreign key (job) references jobs(id),
     foreign key (employee) references employees(id),
     foreign key (receipent) references users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

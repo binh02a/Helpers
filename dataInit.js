@@ -144,19 +144,20 @@ return connect()
                   fake.name.findName()}", "${
                     fake.phone.phoneNumber()}", "${
                       fake.internet.email()}", "${
-                        fake.lorem.words(5 + fake.random.number(20))}",${
-                          _.sample(salaryPool)}, "${
-                              fake.date.between('2020-05-01', '2022-12-31').toJSON().slice(0, 10)}", "${
-                                _.sample(locationIds)}", "${
-                                  fake.lorem.sentence()}", ${
-                                    dice()}, ${
-                                      dice()})`);
+                        fake.lorem.words(5 + fake.random.number(20))}", ${
+                          _.sample(salaryPool)},"${
+                              fake.date.between('2020-05-01', '2021-12-31').toJSON().slice(0, 10)}", "${
+                                fake.date.between('2022-05-01', '2022-12-31').toJSON().slice(0, 10)}", "${
+                                  _.sample(locationIds)}", "${
+                                    fake.lorem.sentence()}", ${
+                                      dice()}, ${
+                                        dice()})`);
 
         return query(`insert into jobs values ${jobs.join(',')};`);
     })
-    .then(() => query('select jobid from jobs;'))
+    .then(() => query('select id from jobs;'))
     .then((jobs) => {
-        jobIds = _.map(jobs, 'jobid');
+        jobIds = _.map(jobs, 'id');
     })
     // INTERESTED ROLES, DESIRED LOCATIONS
     .then(() => {
