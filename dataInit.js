@@ -115,13 +115,23 @@ return connect()
                             fake.random.number({min: 100})}, "${
                               _.sample(locationIds)}", ${
                                 dice() && dice()}, "${
-                                  fake.lorem.sentence()}")`);
+                                  fake.lorem.sentence()}", ${
+                                    true})`);
 
         return query(`insert into employees values ${docs.join(',')};`);
     })
     // EMPLOYERS
     .then(() => {
-        const docs = employers.map((id) => `("${id}", "${fake.company.companyName()}", "${fake.phone.phoneNumber()}", "${fake.internet.url()}", "${_.sample(locationIds)}")`);
+        const docs = employers.map((id) => `("${
+          id}", "${
+            fake.name.firstName()}", "${
+              fake.name.lastName()}", "${
+                fake.company.companyName()}", "${
+                  fake.random.number({min: 10000, max:999999})}","${
+                    fake.phone.phoneNumber()}", "${
+                      fake.phone.phoneNumber()}", "${
+                        fake.internet.url()}", ${
+                          dice()})`);
 
         return query(`insert into employers values ${docs.join(',')};`);
     })
@@ -130,10 +140,16 @@ return connect()
         const jobs = [...Array(10)].map(() => `(uuid(), "${
             _.sample(employers)}", "${
                 _.sample(roleIds)}", "${
-                    fake.lorem.words(5 + fake.random.number(5))}",${
-                      _.sample(salaryPool)}, "${
+                  fake.name.findName()}", "${
+                    fake.phone.phoneNumber()}", "${
+                      fake.internet.email()}", "${
+                        fake.lorem.words(5 + fake.random.number(20))}",${
+                          _.sample(salaryPool)}, "${
                               fake.date.between('2020-05-01', '2022-12-31').toJSON().slice(0, 10)}", "${
-                                _.sample(locationIds)}", "${fake.lorem.sentence()}")`);
+                                _.sample(locationIds)}", "${
+                                  fake.lorem.sentence()}", ${
+                                    dice()}, ${
+                                      dice()})`);
 
         return query(`insert into jobs values ${jobs.join(',')};`);
     })
