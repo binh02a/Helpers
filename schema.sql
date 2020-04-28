@@ -97,6 +97,7 @@ create table interestedRoles(
     employee char(36) not null,
     roleId char(36) not null,
     primary key (employee, roleId),
+    unique (employee, roleId),
     foreign key (employee) references employees(id),
     foreign key (roleId) references roles(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -107,6 +108,7 @@ create table jobInterest(
     initiator enum('employer', 'employee'),
     status enum('available', 'liked', 'offered', 'done'),
     primary key (jobId, employee),
+    unique (jobId, employee),
     foreign key (jobId) references jobs(jobId),
     foreign key (employee) references employees(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

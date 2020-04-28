@@ -57,6 +57,7 @@ let userIds;
 let locationIds;
 let roleIds;
 let employers, employees;
+let jobIds;
 
 const dice = () => fake.random.boolean();
 const salaryLowEnds = [8.72,10,15];
@@ -137,7 +138,7 @@ return connect()
     })
     // JOBS
     .then(() => {
-        const jobs = [...Array(10)].map(() => `(uuid(), "${
+        const jobs = [...Array(20)].map(() => `(uuid(), "${
             _.sample(employers)}", "${
                 _.sample(roleIds)}", "${
                   fake.name.findName()}", "${
@@ -153,6 +154,10 @@ return connect()
 
         return query(`insert into jobs values ${jobs.join(',')};`);
     })
+    .then(() => query('select jobid from jobs;'))
+    .then((jobs) => {
+        jobIds = _.map(jobs, 'jobid');
+    })
     // INTERESTED ROLES, DESIRED LOCATIONS
     .then(() => {
         // each employees has 3-5 interested roles
@@ -161,6 +166,18 @@ return connect()
         }));
 
         return query(`insert into interestedRoles values ${interestedRoles.join(',')};`);
+    })
+    .then(() => {
+      const docs = _.flatten(employees.map((id) => {
+        return _.sampleSize(jobIds, fake.random.number({min: 6, max: 20})).map((job) => {
+          const initEmployer = dice();
+          const status = initEmployer && _.sample(['available', 'offered']) || _.sample(['liked', 'offered']);
+
+          return `("${job}", "${id}", "${initEmployer && 'employer' || 'employee'}", "${status}")`;
+        });
+      }));
+
+      return query(`insert into jobInterest values ${docs.join(',')};`);
     })
     .then(() => console.log('Done fam, enjoy'))
     .then(() => {
