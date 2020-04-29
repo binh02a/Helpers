@@ -9,8 +9,8 @@ create table users(
     salt binary(128) not null,
     customerId varchar(30),
     subscriptionId varchar(30),
-    userType enum('employer', 'employee'),
-    active boolean not null default FALSE,
+    userType enum('employer', 'employee') not null,
+    active boolean not null default false,
     resetCode char(6) not null default "000000",
     primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -29,9 +29,9 @@ create table employers(
     lastName varchar(100) not null,
     companyName varchar(100) not null,
     companyNumber varchar(100) not null,
-    landline varchar(30) not null,
-    mobile varchar(30) not null,
-    website varchar(100) not null,
+    landline varchar(30),
+    mobile varchar(30),
+    website varchar(100),
     pushNotification boolean not null default true,
     primary key (id),
     foreign key (id) references users(id)
@@ -47,10 +47,12 @@ create table employees(
     availableTo date,
     payRateFrom float not null,
     payRateTo float,
-    maximumCommute int,
-    location char(36),
-    ignoreDistance boolean not null default FALSE,
+    maximumCommute int not null,
+    location char(36) not null,
+    ignoreDistance boolean not null default false,
     bio varchar(200),
+    experience varchar(100),
+    available boolean not null default true,
     pushNotification boolean not null default true,
     primary key (id),
     foreign key (id) references users(id),
@@ -88,6 +90,7 @@ create table jobs(
     description varchar(100),
     bonus boolean not null default false,
     accomodation boolean not null default false,
+    active boolean not null default true,
     primary key (id),
     foreign key (employer) references employers(id),
     foreign key (role) references roles(id),
@@ -106,13 +109,19 @@ create table interestedRoles(
 create table jobInterest(
     job char(36) not null,
     employee char(36) not null,
-    initiator enum('employer', 'employee'),
-    status enum('available', 'liked', 'offered', 'done'),
+    initiator enum('employer', 'employee') not null,
+    status enum('available', 'liked', 'offered', 'done') not null,
     primary key (job, employee),
     unique (job, employee),
     foreign key (job) references jobs(id),
     foreign key (employee) references employees(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table employeeSnapshot select * from employees limit 0;
+alter table employeeSnapshot add foreign key (id) references employees(id);
+
+create table jobSnapshot select * from jobs limit 0;
+alter table jobSnapshot add foreign key (id) references jobs(id);
 
 create table notifications(
     id char(36) not null,
@@ -122,7 +131,12 @@ create table notifications(
     message varchar(200) not null,
     unread boolean not null default true,
     createdDate date not null,
+    modifiedDate date not null,
+    employeeSnapshot char(36) not null,
+    jobSnapshot char(36) not null,
     foreign key (job) references jobs(id),
     foreign key (employee) references employees(id),
-    foreign key (receipent) references users(id)
+    foreign key (receipent) references users(id),
+    foreign key (employeeSnapshot) references employeeSnapshot(id),
+    foreign key (jobSnapshot) references jobSnapshot(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

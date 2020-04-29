@@ -24,7 +24,7 @@ We can use dbDump to create and add data into the database instead of the way in
 
 1. Create a new database (if it doesn't exists)
 ```
-mysql -u <user> -e "create database recruiter" -p
+mysql -u root -e "create database recruiter" -p
 ```
 
 2. Execute the dump

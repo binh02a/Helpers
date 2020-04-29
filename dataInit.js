@@ -116,8 +116,10 @@ return connect()
                             fake.random.number({min: 100})}, "${
                               _.sample(locationIds)}", ${
                                 dice() && dice()}, "${
-                                  fake.lorem.sentence()}", ${
-                                    true})`);
+                                  fake.lorem.sentence()}", "${
+                                    fake.lorem.words(10)}", ${
+                                      true}, ${
+                                        true})`);
 
         return query(`insert into employees values ${docs.join(',')};`);
     })
@@ -151,7 +153,8 @@ return connect()
                                   _.sample(locationIds)}", "${
                                     fake.lorem.sentence()}", ${
                                       dice()}, ${
-                                        dice()})`);
+                                        dice()}, ${
+                                          true})`);
 
         return query(`insert into jobs values ${jobs.join(',')};`);
     })
